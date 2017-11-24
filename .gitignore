@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/
+bookstore-spring-mvc.iml
+out/
+#pom.xml
+#src/
+target/
+#web/
