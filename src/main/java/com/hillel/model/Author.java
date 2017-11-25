@@ -75,23 +75,19 @@ public class Author {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Author{" +
+                "id=" + id +
+                ", authorName='" + authorName + '\'' +
+                ", books=" + books +
+                '}';
     }
 
     /////////////////////
-    public static List<Author> stringToList(Author author) {
-        String[] list = author.getAuthorName().split(",");
+    public List<Author> stringToList() {
+        String[] list = authorName.split(",");
         return (List<Author>) new ArrayList(Arrays.asList(list));
     }
-
-    public static String listToString(List<Author> list) {
-        StringBuilder sb  = new StringBuilder();
-        for (Author a: list) {
-            sb.append(a.getAuthorName());
-            sb.append("\n");
-        }
-        return sb.toString();
-    }
     /////////////////////
+
 
 }

@@ -16,33 +16,39 @@ public class BookDaoImpl implements BookDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+    private Session session = sessionFactory.openSession();
+    private Transaction transaction = session.beginTransaction();
+
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
     public void save(Book book) {
-        Session session = this.sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
         session.persist(book);
         transaction.commit();
         session.close();
     }
 
     public List<Book> findAll() {
-        Session session = this.sessionFactory.openSession();
         return session.createCriteria(Book.class).list();
+  //      return session.createCriteria(Book.class, "select b from book b").list();
     }
 
     public Book findById(Integer id) {
-        Session session = this.sessionFactory.openSession();
         return (Book) session.get(Book.class, id);
     }
 
     public void delete(Book book) {
-        ////////TODO:
+        //TODO:
+        session.delete(book);
+        transaction.commit();
+        session.close();
     }
 
     public void update(Book book) {
-        ////////TODO:
+        //TODO:
+        session.merge(book);
+        transaction.commit();
+        session.close();
     }
 }

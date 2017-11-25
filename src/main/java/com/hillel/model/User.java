@@ -73,6 +73,11 @@ public class User {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", books=" + books +
+                '}';
     }
 }

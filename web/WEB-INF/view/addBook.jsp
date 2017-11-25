@@ -31,7 +31,7 @@
                 <td><form:input path="bookName"/></td>
             </tr>
             <tr>
-                <td><form:label path="authorName">Authors</form:label></td>
+                <td><form:label path="authors">Authors</form:label></td>
                 <td><form:input path="authors"></form:input></td>
             <tr>
                 <td><input type="submit" value="Add"/></td>

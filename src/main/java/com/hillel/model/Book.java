@@ -21,13 +21,11 @@ public class Book {
     @JoinColumn(name = "user_id")
     private User user;
 
-    //////////////////////////////
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "items",
             joinColumns = {@JoinColumn(name = "book_id")},
             inverseJoinColumns = {@JoinColumn(name = "author_id")})
     private List<Author> authors;
-    //////////////////////////////
 
     public Book() {
     }
@@ -98,18 +96,18 @@ public class Book {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Book{" +
+                "id=" + id +
+                ", bookName='" + bookName + '\'' +
+                ", user=" + user +
+                ", authors=" + authors +
+                '}';
     }
 
     /////////////////////
-    public static List<Author> stringToList(Author author) {
-        String[] list = author.getAuthorName().split(",");
-        return (List<Author>) new ArrayList(Arrays.asList(list));
-    }
-
-    public static String listToString(List<Author> list) {
+    public String listToString() {
         StringBuilder sb  = new StringBuilder();
-        for (Author a: list) {
+        for (Author a: authors) {
             sb.append(a.getAuthorName());
             sb.append("\n");
         }

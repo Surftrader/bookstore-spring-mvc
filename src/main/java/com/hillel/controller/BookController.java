@@ -1,5 +1,6 @@
 package com.hillel.controller;
 
+import com.hillel.dao.AuthorDao;
 import com.hillel.dao.BookDao;
 import com.hillel.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class BookController {
 
     @Autowired
     private BookDao bookDao;
+
+    @Autowired
+    private AuthorDao authorDao;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String getAllBook(Model model) {

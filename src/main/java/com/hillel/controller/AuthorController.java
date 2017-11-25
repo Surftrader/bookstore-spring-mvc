@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -26,7 +24,7 @@ public class AuthorController {
     public String getAllAuthors(Model model) {
 
         List<Author> authors = authorDao.findAll();
-        model.addAttribute("authors", listToString(authors)); //
+        model.addAttribute("authors", authors); //
         return "view/listAuthors";
     }
 
@@ -48,20 +46,5 @@ public class AuthorController {
     public String addAuthor(@ModelAttribute Author author) {
         authorDao.save(author);
         return "redirect:/author/";
-    }
-
-    public static List<Author> stringToList(Author author) {
-        String[] list = author.getAuthorName().split(",");
-        List<Author> resault = new ArrayList(Arrays.asList(list));
-        return resault;
-    }
-
-    public static String listToString(List<Author> list) {
-        StringBuilder sb  = new StringBuilder();
-        for (Author a: list) {
-            sb.append(a.getAuthorName());
-            sb.append("\n");
-        }
-        return sb.toString();
     }
 }
